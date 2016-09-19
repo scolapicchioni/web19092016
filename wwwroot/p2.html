@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="">
+  <head>
+      <meta charset="utf-8" />
+      <title></title>
+      <meta name="description" content="" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <!-- Place favicon.ico in the root directory -->
+  </head>
+  <body>
+    <h1>Page 2!!</h1>
+    <form action="p2.html" method="get">
+      <div>Name: <input type="text" name="Name" value="Simona" /></div>
+      <div>Gender:
+        <div><input type="radio" name="Gender" value="Male"/>Male</div>
+        <div><input type="radio" name="Gender" value="Female" checked/>Female</div>
+        <div><input type="radio" name="Gender" value="Unidentified"/>Unidentified</div>
+      </div>
+      <div>Hobby:
+        <div><input type="checkbox" name="Hobby" value="Music"/>Music</div>
+        <div><input type="checkbox" name="Hobby" value="Movies" checked/>Movies</div>
+        <div><input type="checkbox" name="Hobby" value="Programming"/>Programming</div>
+      </div>
+      <input type="hidden" name="TheHiddenField" value="theSecret" />
+      <div>Password<input type="password" name="pwd" /></div>
+      <div> Country: 
+        <select name="Country" size="5" multiple>
+        <option value="IT">Italy</option>
+        <option value="NL">Nederland</option>
+        <option value="GB">UK</option>
+        <option value="IT" selected>Italy</option>
+        <option value="NL">Nederland</option>
+        <option value="GB">UK</option>
+        <option value="IT">Italy</option>
+        <option value="NL">Nederland</option>
+        <option value="GB">UK</option>
+      </select>
+      </div>
+      <div>Description: <textarea name="Description"></textarea></div>
+      <input type="submit" value="Click here!" />
+      <input type="reset" value="Back to default values" />
+    </form>
+  </body>
+</html>
