@@ -1,0 +1,101 @@
+/* tag selector */
+div {
+    background-color:aqua;
+    color:blueviolet;
+}
+
+/* class selector */
+.important-stuff {
+    font-family : Arial;
+    font-size: 16px;
+}
+
+/* id selector */
+#myItem{
+    border: 1px solid black;
+}
+
+
+
+
+/*selectors can be combined */
+li.important-stuff{
+    border: 5px dashed red;
+}
+
+ /*all children 
+ul > li {
+    border: 1px dotted magenta;
+}*/
+
+/* descendants */
+ul li {
+    border: 1px dotted magenta;
+}
+
+/* next sibling 
+#myItem + li {
+    border: 3px solid yellow;
+}
+*/
+
+/* all siblings */
+#myItem ~ li {
+    border: 3px solid yellow;
+}
+
+/* filters */
+
+/*attribute filter */
+
+[type=submit] {
+    background-color:red;
+}
+a[href*=infosupport]{
+
+}
+a[href]{
+
+}
+
+a:hover {
+    font-weight : bold;
+    text-decoration: none;
+}
+a:visited{
+
+}
+a:active{
+
+}
+
+p::first-line{
+    background-color:orange;
+}
+
+p::first-letter{
+    font-size:3em;
+}
+
+
+
+tr:nth-child(2n){
+    background-color:grey;
+    color:white;
+}
+tr:nth-child(2n+1){
+    background-color:white;
+    color:grey;
+}
+
+tr:first-child{
+    background-color:black;
+    color:white;
+}
+
+/* or */
+div, li, p, ul {
+
+}
+
+
