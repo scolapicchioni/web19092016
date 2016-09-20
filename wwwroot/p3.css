@@ -70,7 +70,8 @@ a:active{
 }
 
 p::first-line{
-    background-color:orange;
+    background-color:#FF0000;
+    opacity: 0.5;
 }
 
 p::first-letter{

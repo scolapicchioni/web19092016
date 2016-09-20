@@ -1,0 +1,25 @@
+#div1{
+    border: 50px inset blue;
+    padding : 20px;
+    margin : auto;
+    height : 200px;
+    width : 800px;
+    font-family: "times new roman", Arial;
+    font-size: 2em;
+}
+#div2{
+    border: 1px solid red;
+    margin: 5px;
+}
+li{
+    font-size: 2rem;
+}
+table{
+    width : 100%;
+    border-collapse: collapse;
+    border : 1px solid black;
+}
+td{
+    border : 1px solid black;
+    margin:0;
+}
