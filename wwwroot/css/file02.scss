@@ -1,0 +1,34 @@
+$nice-blue: #BADA55;
+$light-blue: $nice-blue + #111;
+
+#header {
+  color: $light-blue;
+}
+
+
+
+#nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background-color:$nice-blue;
+    & > ul{
+        list-style: none;
+        padding:0;
+        margin:0;
+        & > li {
+            float:left;
+            padding:10px;
+            & > a{
+                text-decoration:none;
+                color:orange;
+                padding:10px;
+                &:hover{
+                    text-decoration:none;
+                    background-color: #D5D5D5;
+                }
+            }
+        }
+    }
+}
