@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            if(window.attachEvent !== undefined){
+                window.attachEvent("onload", function(){
+                    document.getElementById("demo").innerHTML = "Hello World!";
+                
+                    document.getElementById("btn-demo").attachEvent("onclick", function(){
+                        document.getElementById("demo").innerHTML = "Hi!";
+                    });
+                });
+            }else if(window.addEventListener!== undefined) {
+                window.addEventListener("load", function(){
+                    document.getElementById("demo").innerHTML = "Hello World!";
+                
+                    document.getElementById("btn-demo").addEventListener("click", function(){
+                        document.getElementById("demo").innerHTML = "Hi!";
+                    });
+                
+                    var template = document.getElementById("template");
+                    var copy = template.cloneNode(true);
+                    copy.removeAttribute("id");
+                    copy.children[0].innerHTML = "Rome";
+                    copy.children[1].innerHTML = "What a trip!";
+
+                    document.getElementById("trips").appendChild(copy);
+                });
+            }
+        </script>
+        <style>
+            #template {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+
+    <p id="demo"></p>
+
+    <div id="trips"></div>
+
+    <div id="template">
+        <h1 class="destination"></h1>
+        <p class="description"></p>
+    </div>
+
+    <button id="btn-demo">Click Here!!</button>
+
+    </body>
+</html>

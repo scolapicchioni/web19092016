@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Trips</title>
+        <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+        <script src="../lib/jquery/dist/js/jquery.js"></script>
+        <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    </head>
+    <body>
+        
+        <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Trips</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">All Trips</a></li>
+                <li><a href="#">Add Trip</a></li>
+            </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+        </nav>
+
+        <div id="header">
+            <h1>My Trips</h1>
+            <h2>My adventures around the world</h2>
+        </div>
+        
+
+        <div id="trips" class="container">
+            <div class="row">
+
+                <div class="trip col-md-4 panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="trip-destination panel-title">Roma</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="trip-description">
+                            Bacon ipsum dolor amet pork sausage brisket venison tongue beef, drumstick landjaeger ground round tail salami jowl pork belly. Shank drumstick strip steak cow sausage bacon tongue meatball turkey bresaola filet mignon shoulder pig porchetta. Ribeye pig chicken meatloaf, landjaeger pork belly chuck turducken porchetta flank corned beef tri-tip. Alcatra swine hamburger boudin, tail flank pork chop doner shankle bacon venison salami beef. Swine pork belly sausage rump, bacon ham hock filet mignon meatloaf chicken kevin pancetta spare ribs. Short ribs beef ribs chicken hamburger ham hock pork belly brisket porchetta. Tail cow turkey, venison meatball ground round bresaola ham hock boudin short ribs.
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="trip-date col-md-6">10/10/2010</div>
+                        <div class="trip-rating col-md-6">9</div>
+                    </div>
+                </div>
+
+                <div class="trip col-md-4 panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="trip-destination panel-title">Milan</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="trip-description">
+                            Pancetta short ribs tongue spare ribs salami, meatloaf short loin kevin. Capicola tongue biltong doner fatback, ham hamburger tail drumstick pastrami. Shank ham hock tail, andouille turkey spare ribs ground round swine corned beef cow pastrami chicken jowl doner. Chicken shank short ribs venison chuck t-bone. Brisket turkey frankfurter tri-tip ribeye, kielbasa ham meatloaf shank pancetta kevin salami turducken pork.
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="trip-date col-md-6">10/10/2010</div>
+                        <div class="trip-rating col-md-6">9</div>
+                    </div>
+                </div>
+
+                <div class="trip col-md-4 panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="trip-destination panel-title">New York</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="trip-description">
+                            Hamburger flank chuck frankfurter, short ribs kevin shoulder ribeye shank. Ham hock doner turducken t-bone shankle chuck. Turducken leberkas turkey short loin brisket ribeye picanha, ground round jowl pork chop venison rump swine chuck. Bacon tail short loin, meatball picanha pig cow doner leberkas sausage turkey venison pork loin. Jowl corned beef filet mignon tenderloin shankle doner strip steak cow hamburger sausage spare ribs biltong.
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="trip-date col-md-6">10/10/2010</div>
+                        <div class="trip-rating col-md-6">9</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="trip col-md-4 panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="trip-destination panel-title">Paris</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="trip-description">
+                            Picanha brisket cow pork chop ribeye rump ground round sausage. Flank shank ham hock ribeye cow, beef ribs cupim prosciutto. Hamburger leberkas turkey turducken t-bone tri-tip corned beef shankle alcatra ball tip bresaola ground round cupim sausage. Kevin doner landjaeger pork belly. Short loin frankfurter kielbasa, tenderloin tri-tip sirloin ribeye swine ham doner. Fatback tongue rump cow meatball sausage, beef capicola turducken pork pork belly spare ribs tri-tip tenderloin short loin. Brisket leberkas beef ribs tongue t-bone fatback shank jowl turducken hamburger tail shankle ground round beef.
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="trip-date col-md-6">10/10/2010</div>
+                        <div class="trip-rating col-md-6">9</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form id="add-trip-container" class="form-horizontal">
+        <div class="form-group">
+            <label for="destination-input" class="col-sm-2 control-label">Destination</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="destination-input">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description-input" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="description-input">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date-input" class="col-sm-2 control-label">Date</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="date-input">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="rating-input" class="col-sm-2 control-label">Rating</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="rating-input">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Add</button>
+            </div>
+        </div>
+        </form>
+
+        <div id="footer">
+            <p>&copy;</p>
+        </div>
+  </body>
+</html>
