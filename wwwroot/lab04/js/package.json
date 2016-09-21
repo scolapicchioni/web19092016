@@ -1,0 +1,12 @@
+{
+  "name": "lab04",
+  "version": "4.0.0",
+  "description": "An example module to illustrate the usage of webpack and typescript",
+  "author": "Simona",
+  "devDependencies": {},
+  "dependencies": {
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "webpack": "^1.13.2"
+  }
+}
