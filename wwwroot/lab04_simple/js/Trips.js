@@ -6,10 +6,11 @@
     _trips.push({id:4,  destination:"Budapest", description:"yadah",  date:"01/01/01",rating: 9});
 
     window.addEventListener("load",function(){
-        const target = document.getElementById("trips").children[0];
-        const template = document.getElementById("template");
-        for(const trip of _trips){
-            const newTripElement=template.cloneNode(true);
+        var target = document.getElementById("trips").children[0];
+        var template = document.getElementById("template");
+        for(var i=0; i< _trips.length;i++){
+            var trip = _trips[i];
+            var newTripElement=template.cloneNode(true);
             template.removeAttribute("id");
             newTripElement.children[0].children[0].innerHTML = trip.destination;
             newTripElement.children[1].children[0].innerHTML = trip.description;
