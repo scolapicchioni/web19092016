@@ -1,0 +1,92 @@
+$body-background: white;
+$text-color:#444;
+$important-color:orange;
+$light-background:#D5D5D5;
+$dark-background: #9099A2;
+#template{
+    display: none;
+}
+
+body{
+    padding:0;
+    background-color:$body-background;
+    color:$text-color;
+    font-family:Arial, Verdana, sans-serif;
+    font-size: 1em;
+    line-height: 1.6em;
+    text-align: justify;
+}
+
+h1{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    color:$important-color;
+}
+
+nav{
+    background-color:$dark-background;
+    & > ul{
+        display:flex;
+        list-style: none;
+        padding:0;
+        margin:0;
+        & > li {
+            flex:1;
+            display:flex;
+            padding:10px;
+            & > a{
+                flex:1;
+                text-decoration:none;
+                text-align:center;
+                color:$important-color;
+                padding:10px;
+                border-radius:5px;
+                transition:all 1s;
+                &:hover{
+                    text-decoration:none;
+                    background-color: $light-background;
+                    color:$dark-background;
+                    box-shadow: 1px 1px 5px $body-background;
+                }
+            }
+        }
+    }
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+}
+
+#trips{
+    display:flex;
+    flex-wrap:wrap;
+    
+}
+.trip{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-basis:30%;
+    
+    padding:10px;
+    margin:5px;
+    background-color: $light-background;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px $dark-background;
+}
+
+.panel-title{
+    color:$important-color;
+    font-weight:bold;
+}
+
+.panel-footer{
+    display:flex;
+    justify-content: space-between;
+}
+
+#add-trip-container{
+    display:none;
+}
+

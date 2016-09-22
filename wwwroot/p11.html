@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title></title>
+      <style>
+        @font-face{
+            font-family : Pacifico;
+            src: url('fonts/Pacifico.ttf');
+        }
+        #div1{
+          width : 100px;
+          height : 100px;
+          background-color : rgba(0, 0, 255, 0.50);
+          border-radius : 50%;
+          box-shadow : 5px 5px 10px #CCC;
+          text-shadow :  5px 5px 5px white;
+          font-size: 50px;
+          font-family:Pacifico, cursive;
+          transition : all 3s;
+        }
+        #div1:hover{
+          width : 200px;
+          height : 200px;
+          box-shadow : 10px 10px 50px #AAA;
+          background-color : rgb(0, 0, 255);
+          color:red;
+          transform: rotate(10deg);
+          transition : all 3s;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="div1"> HI! </div>
+    </body>
+</html>
