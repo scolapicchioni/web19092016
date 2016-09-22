@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Pacifico;
+  src: url("fonts/Pacifico.ttf"); }
+
 #template {
   display: none; }
 
@@ -11,7 +15,7 @@ body {
   text-align: justify; }
 
 h1 {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Pacifico, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 2em;
   color: orange; }
 
@@ -60,6 +64,7 @@ nav {
   box-shadow: 1px 1px 5px #9099A2; }
 
 .panel-title {
+  font-family: Pacifico, cursive;
   color: orange;
   font-weight: bold; }
 
