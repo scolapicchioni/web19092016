@@ -32,60 +32,56 @@
         </div><!-- /.container-fluid -->
         </nav>
 
-        <header>
-            <h1>My Trips</h1>
-            <h2>My adventures around the world</h2>
-        </header>
-        
-
-        <section id="trips" class="container">
-            <div class="row">
-
+        <section class="container">
+            <header>
+                <h1>My Trips</h1>
+                <h2>My adventures around the world</h2>
+            </header>
+            
+            <div id="trips">
+                <div class="row">
+                </div>
             </div>
             <div class="row">
                 <canvas id="chart" height="200" width="600">
                 </canvas>
             </div>    
+            <form id="add-trip-container" class="form-horizontal">
+                <div class="form-group">
+                    <label for="destination-input" class="col-sm-2 control-label">Destination</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="destination-input" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description-input" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="description-input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="date-input" class="col-sm-2 control-label">Date</label>
+                    <div class="col-sm-10">
+                    <input type="date" class="form-control" id="date-input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rating-input" class="col-sm-2 control-label">Rating</label>
+                    <div class="col-sm-10">
+                    <input type="number" class="form-control" id="rating-input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Add</button>
+                    </div>
+                </div>
+            </form>
         </section>
-
-        <form id="add-trip-container" class="form-horizontal">
-        <div class="form-group">
-            <label for="destination-input" class="col-sm-2 control-label">Destination</label>
-            <div class="col-sm-10">
-            <input type="text" class="form-control" id="destination-input" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="description-input" class="col-sm-2 control-label">Description</label>
-            <div class="col-sm-10">
-            <input type="text" class="form-control" id="description-input">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="date-input" class="col-sm-2 control-label">Date</label>
-            <div class="col-sm-10">
-            <input type="date" class="form-control" id="date-input">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="rating-input" class="col-sm-2 control-label">Rating</label>
-            <div class="col-sm-10">
-            <input type="number" class="form-control" id="rating-input">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Add</button>
-            </div>
-        </div>
-        </form>
 
         <footer>
             <p>&copy;</p>
         </footer>
-
-
-
 
         <article id="template" class="trip col-md-4 panel panel-default">
             <div class="panel-heading">
