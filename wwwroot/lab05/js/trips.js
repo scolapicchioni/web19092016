@@ -224,7 +224,7 @@
 	                    var trip = _step.value;
 	
 	                    var newTripElement = template.cloneNode(true);
-	                    template.removeAttribute("id");
+	                    newTripElement.removeAttribute("id");
 	                    newTripElement.children[0].children[0].innerHTML = trip.destination;
 	                    newTripElement.children[1].children[0].innerHTML = trip.description;
 	                    newTripElement.children[2].children[0].innerHTML = trip.date;
