@@ -16,7 +16,6 @@ export class Trip{
         this._destination = v;
     }
     
-    
     private _date : string;
     public get date() : string {
         return this._date;
@@ -24,7 +23,6 @@ export class Trip{
     public set date(v : string) {
         this._date = v;
     }
-    
     
     private _rating : number;
     public get rating() : number {
@@ -34,7 +32,6 @@ export class Trip{
         this._rating = v;
     }
     
-    
     private _id : number;
     public get id() : number {
         return this._id;
@@ -42,13 +39,12 @@ export class Trip{
     public set id(v : number) {
         this._id = v;
     }
-    
 
     constructor(id:number, destination:string, description:string, date:string, rating:number){
+        this.id = id;
         this.destination = destination;
         this.description = description;
         this.date = date;
         this.rating = rating;
-        this.id = id;
     }
 }

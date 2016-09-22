@@ -7,7 +7,7 @@ export class ViewModel{
     constructor(dataLayer: IDataLayer){
         this._dataLayer = dataLayer;
 
-        window.addEventListener("load",this.init);
+        window.addEventListener("load",()=>this.init());
     }
 
     init(){
@@ -15,12 +15,12 @@ export class ViewModel{
         const target = document.getElementById("trips").children[0];
         const template = document.getElementById("template");
         for(const trip of trips){
-            const newTripElement = template.cloneNode(true);
+            const newTripElement : HTMLElement = <HTMLElement>template.cloneNode(true);
             template.removeAttribute("id");
-            newTripElement.children[0][0].innerHTML = trip.destination;
-            newTripElement.children[1][0].innerHTML = trip.description;
-            newTripElement.children[2][0].innerHTML = trip.date;
-            newTripElement.children[2][1].innerHTML = trip.rating;
+            (<HTMLElement>newTripElement.children[0]).children[0].innerHTML = trip.destination;
+            (<HTMLElement>newTripElement.children[1]).children[0].innerHTML = trip.description;
+            (<HTMLElement>newTripElement.children[2]).children[0].innerHTML = trip.date;
+            (<HTMLElement>newTripElement.children[2]).children[1].innerHTML = trip.rating.toString();
             target.appendChild(newTripElement);
         }
         

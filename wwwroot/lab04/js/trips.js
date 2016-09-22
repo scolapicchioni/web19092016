@@ -58,6 +58,7 @@
 	var Trip_1 = __webpack_require__(2);
 	var ArrayDataLayer = (function () {
 	    function ArrayDataLayer() {
+	        this._trips = [];
 	        this._trips.push(new Trip_1.Trip(1, "Roma", "bla", "01/01/01", 9));
 	        this._trips.push(new Trip_1.Trip(2, "Paris", "yada", "01/01/01", 8));
 	        this._trips.push(new Trip_1.Trip(3, "Madrid", "blah", "01/01/01", 5));
@@ -88,11 +89,11 @@
 	"use strict";
 	var Trip = (function () {
 	    function Trip(id, destination, description, date, rating) {
+	        this.id = id;
 	        this.destination = destination;
 	        this.description = description;
 	        this.date = date;
 	        this.rating = rating;
-	        this.id = id;
 	    }
 	    Object.defineProperty(Trip.prototype, "description", {
 	        get: function () {
@@ -156,8 +157,9 @@
 	"use strict";
 	var ViewModel = (function () {
 	    function ViewModel(dataLayer) {
+	        var _this = this;
 	        this._dataLayer = dataLayer;
-	        window.addEventListener("load", this.init);
+	        window.addEventListener("load", function () { return _this.init(); });
 	    }
 	    ViewModel.prototype.init = function () {
 	        var trips = this._dataLayer.getAllTrips();
@@ -167,10 +169,10 @@
 	            var trip = trips_1[_i];
 	            var newTripElement = template.cloneNode(true);
 	            template.removeAttribute("id");
-	            newTripElement.children[0][0].innerHTML = trip.destination;
-	            newTripElement.children[1][0].innerHTML = trip.description;
-	            newTripElement.children[2][0].innerHTML = trip.date;
-	            newTripElement.children[2][1].innerHTML = trip.rating;
+	            newTripElement.children[0].children[0].innerHTML = trip.destination;
+	            newTripElement.children[1].children[0].innerHTML = trip.description;
+	            newTripElement.children[2].children[0].innerHTML = trip.date;
+	            newTripElement.children[2].children[1].innerHTML = trip.rating.toString();
 	            target.appendChild(newTripElement);
 	        }
 	    };

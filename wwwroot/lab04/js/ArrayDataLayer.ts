@@ -6,6 +6,7 @@ export class ArrayDataLayer implements IDataLayer{
     private _trips : Trip[];
    
    constructor(){
+       this._trips = [];
        this._trips.push(new Trip(1, "Roma", "bla", "01/01/01",9));
        this._trips.push(new Trip(2, "Paris", "yada", "01/01/01",8));
        this._trips.push(new Trip(3, "Madrid", "blah", "01/01/01",5));
