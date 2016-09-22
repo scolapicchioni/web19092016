@@ -1,4 +1,8 @@
 {
+  "name": "site01",
+  "version": "1.0.0",
+  "description": "Html5 Css3 Labs And Demos",
+  "copyright": "Info Support 2016",
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0",

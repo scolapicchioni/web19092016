@@ -1,0 +1,14 @@
+{
+  "name": "lab04",
+  "version": "4.0.0",
+  "description": "An example module to illustrate the usage of webpack and babel",
+  "author": "Simona",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0"
+  },
+  "dependencies": {
+    "webpack": "^1.13.2"
+  }
+}
