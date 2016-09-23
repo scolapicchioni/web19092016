@@ -35,7 +35,7 @@ export class Trip{
         this._id = v;
     }
 
-    constructor(id, destination, description, date, rating){
+    constructor(id=0, destination="", description="", date="", rating=0){
         this.id = id || 0;
         this.destination = destination || "";
         this.description = description || "";
