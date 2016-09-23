@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title></title>
+    </head>
+    <body>
+        N1: <input type="number" id="n1" /> <br/>
+        N2: <input type="number" id="n2" /> <br/>
+      
+      <button id="sum">Sum</button>
+      <button id="subtract">Subtract</button>
+      <button id="multiply">Multiply</button>
+      <button id="divide">Divide</button>
+
+      <script>
+        const worker = new Worker(`worker1.js`);
+        //const result = worker.sum(3,2);
+
+        worker.addEventListener("message", function(e){
+            console.log(e.data.action);
+        });
+
+        document.getElementById("sum").addEventListener("click", function(){
+            worker.postMessage({action: "sum", n1: 5, n2: 10});
+        });
+
+        document.getElementById("subtract").addEventListener("click", function(){
+            worker.postMessage({action: "subtract", n1: 5, n2: 10});
+        });
+
+        document.getElementById("multiply").addEventListener("click", function(){
+            worker.postMessage({action: "multiply", n1: 5, n2: 10});
+        });
+
+        document.getElementById("divide").addEventListener("click", function(){
+            worker.postMessage({action: "divide", n1: 5, n2: 10});
+        });
+
+
+        </script>
+    </body>
+</html>
