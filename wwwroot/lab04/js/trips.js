@@ -77,6 +77,20 @@
 	        this._trips.push(trip);
 	        return trip;
 	    };
+	    ArrayDataLayer.prototype.getTripById = function (id) {
+	        return this._trips.filter(function (t) { return t.id === id; })[0];
+	    };
+	    ArrayDataLayer.prototype.editTrip = function (trip) {
+	        var original = this.getTripById(trip.id);
+	        original.description = trip.description;
+	        original.destination = trip.destination;
+	        original.date = trip.date;
+	        original.rating = trip.rating;
+	        return original;
+	    };
+	    ArrayDataLayer.prototype.removeTrip = function (id) {
+	        this._trips.splice(this._trips.indexOf(this.getTripById(id)), 1);
+	    };
 	    return ArrayDataLayer;
 	}());
 	exports.ArrayDataLayer = ArrayDataLayer;
@@ -89,6 +103,11 @@
 	"use strict";
 	var Trip = (function () {
 	    function Trip(id, destination, description, date, rating) {
+	        if (id === void 0) { id = 0; }
+	        if (destination === void 0) { destination = ""; }
+	        if (description === void 0) { description = ""; }
+	        if (date === void 0) { date = ""; }
+	        if (rating === void 0) { rating = 0; }
 	        this.id = id;
 	        this.destination = destination;
 	        this.description = description;
@@ -152,9 +171,10 @@
 
 /***/ },
 /* 3 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var Trip_1 = __webpack_require__(2);
 	var ViewModel = (function () {
 	    function ViewModel(dataLayer) {
 	        var _this = this;
@@ -162,19 +182,70 @@
 	        window.addEventListener("load", function () { return _this.init(); });
 	    }
 	    ViewModel.prototype.init = function () {
+	        var _this = this;
+	        this.refreshUI();
+	        document.getElementById("add-trip").addEventListener("click", function () { return _this.addTrip(); });
+	        document.getElementById("save-trip").addEventListener("click", function () { return _this.saveTrip(); });
+	    };
+	    ViewModel.prototype.refreshUI = function () {
+	        var _this = this;
 	        var trips = this._dataLayer.getAllTrips();
 	        var target = document.getElementById("trips").children[0];
+	        target.innerHTML = "";
 	        var template = document.getElementById("template");
 	        for (var _i = 0, trips_1 = trips; _i < trips_1.length; _i++) {
 	            var trip = trips_1[_i];
 	            var newTripElement = template.cloneNode(true);
-	            template.removeAttribute("id");
+	            newTripElement.removeAttribute("id");
 	            newTripElement.children[0].children[0].innerHTML = trip.destination;
 	            newTripElement.children[1].children[0].innerHTML = trip.description;
-	            newTripElement.children[2].children[0].innerHTML = trip.date;
-	            newTripElement.children[2].children[1].innerHTML = trip.rating.toString();
+	            newTripElement.children[1].children[1].innerHTML = trip.date;
+	            newTripElement.children[1].children[2].innerHTML = trip.rating.toString();
+	            var btnEdit = newTripElement.children[2].children[0].children[0];
+	            btnEdit.setAttribute("data-trip-id", trip.id.toString());
+	            btnEdit.addEventListener("click", function (event) { return _this.editTrip(+event.srcElement.getAttribute("data-trip-id")); });
+	            var btnDelete = newTripElement.children[2].children[1].children[0];
+	            btnDelete.setAttribute("data-trip-id", trip.id.toString());
+	            btnDelete.addEventListener("click", function (event) { return _this.deleteTrip(+event.srcElement.getAttribute("data-trip-id")); });
 	            target.appendChild(newTripElement);
 	        }
+	    };
+	    ViewModel.prototype.addTrip = function () {
+	        var trip = new Trip_1.Trip();
+	        document.getElementById("save-trip").setAttribute("data-trip-id", trip.id.toString());
+	        document.getElementById("destination-input").value = trip.destination;
+	        document.getElementById("description-input").value = trip.description;
+	        document.getElementById("date-input").value = trip.date;
+	        document.getElementById("rating-input").value = trip.rating.toString();
+	    };
+	    ViewModel.prototype.deleteTrip = function (tripId) {
+	        this._dataLayer.removeTrip(tripId);
+	        this.refreshUI();
+	    };
+	    ViewModel.prototype.editTrip = function (tripId) {
+	        var trip = this._dataLayer.getTripById(tripId);
+	        document.getElementById("save-trip").setAttribute("data-trip-id", trip.id.toString());
+	        document.getElementById("destination-input").value = trip.destination;
+	        document.getElementById("description-input").value = trip.description;
+	        document.getElementById("date-input").value = trip.date;
+	        document.getElementById("rating-input").value = trip.rating.toString();
+	    };
+	    ViewModel.prototype.saveTrip = function () {
+	        event.preventDefault();
+	        var trip = new Trip_1.Trip();
+	        trip.id = +document.getElementById("save-trip").getAttribute("data-trip-id");
+	        trip.destination = document.getElementById("destination-input").value;
+	        trip.description = document.getElementById("description-input").value;
+	        trip.date = document.getElementById("date-input").value;
+	        trip.rating = +document.getElementById("rating-input").value;
+	        if (trip.id === 0) {
+	            this._dataLayer.addTrip(trip);
+	        }
+	        else {
+	            this._dataLayer.editTrip(trip);
+	        }
+	        this.refreshUI();
+	        return false;
 	    };
 	    return ViewModel;
 	}());

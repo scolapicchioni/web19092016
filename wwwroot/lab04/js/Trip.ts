@@ -40,7 +40,7 @@ export class Trip{
         this._id = v;
     }
 
-    constructor(id:number, destination:string, description:string, date:string, rating:number){
+    constructor(id:number=0, destination:string="", description:string="", date:string="", rating:number=0){
         this.id = id;
         this.destination = destination;
         this.description = description;

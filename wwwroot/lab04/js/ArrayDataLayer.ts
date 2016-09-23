@@ -25,4 +25,21 @@ export class ArrayDataLayer implements IDataLayer{
         this._trips.push(trip);
         return trip;
     }
+
+    
+    getTripById(id:number):Trip{
+        return this._trips.filter(t=>t.id===id)[0];
+    }
+    
+    editTrip(trip:Trip):Trip{
+        const original : Trip = this.getTripById(trip.id);
+        original.description = trip.description;
+        original.destination = trip.destination;
+        original.date = trip.date;
+        original.rating = trip.rating;
+        return original; 
+    }
+    removeTrip(id:number):void{
+        this._trips.splice(this._trips.indexOf(this.getTripById(id)),1);
+    }
 }
