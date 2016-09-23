@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title></title>
+      <script>
+        if(window.localStorage){
+          localStorage.key1 = "value1";
+          localStorage['key1'] = "value1";
+          localStorage.setItem('key1', "value1");
+
+          var v1 = localStorage.key1; //"value1"
+          v1 = localStorage['key1']; //"value1"
+          v1 = localStorage.getItem('key1'); //"value1"
+
+          //localStorage.length
+
+          var k1 = localStorage.key(0); //'key1'
+
+          var o1 = {
+            id: 1,
+            name: "Simona"
+          };
+
+          var o2 = JSON.parse("{'id' : 5, 'name' : 'Mario'}"); //{id:5, name:"Mario"} 
+          var s1 = JSON.stringify(o1); // "{'id' : 1, 'name' : 'Simona'}"
+        
+      }
+        </script>
+    <body>
+      
+    </body>
+</html>

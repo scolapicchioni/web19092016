@@ -1,0 +1,76 @@
+@font-face {
+  font-family: Pacifico;
+  src: url("../fonts/Pacifico.ttf"); }
+
+#template {
+  display: none; }
+
+body {
+  padding: 0;
+  background-color: white;
+  color: #444;
+  font-family: Arial, Verdana, sans-serif;
+  font-size: 1em;
+  line-height: 1.6em;
+  text-align: justify; }
+
+h1 {
+  font-family: Pacifico, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2em;
+  color: orange; }
+
+nav {
+  background-color: #9099A2; }
+  nav > ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+    nav > ul > li {
+      flex: 1;
+      display: flex;
+      padding: 10px; }
+      nav > ul > li > a {
+        flex: 1;
+        text-decoration: none;
+        text-align: center;
+        color: orange;
+        padding: 10px;
+        border-radius: 5px;
+        transition: all 1s; }
+        nav > ul > li > a:hover {
+          text-decoration: none;
+          background-color: #D5D5D5;
+          color: #9099A2;
+          box-shadow: 1px 1px 5px white; }
+
+.container {
+  display: flex;
+  flex-direction: column; }
+
+#trips {
+  display: flex;
+  flex-wrap: wrap; }
+
+.trip {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-basis: 30%;
+  padding: 10px;
+  margin: 5px;
+  background-color: #D5D5D5;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #9099A2; }
+
+.panel-title {
+  font-family: Pacifico, cursive;
+  color: orange;
+  font-weight: bold; }
+
+.panel-footer {
+  display: flex;
+  justify-content: space-between; }
+
+.invisible {
+  display: none; }
