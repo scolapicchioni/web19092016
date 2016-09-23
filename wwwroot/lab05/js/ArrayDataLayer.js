@@ -21,4 +21,20 @@ export class ArrayDataLayer{
         this._trips.push(trip);
         return trip;
     }
+
+    getTripById(id){
+        return this._trips.filter(t=>t.id===id)[0];
+    }
+    
+    editTrip(trip){
+        const original = this.getTripById(trip.id);
+        original.description = trip.description;
+        original.destination = trip.destination;
+        original.date = trip.date;
+        original.rating = trip.rating;
+        return original; 
+    }
+    removeTrip(id){
+        this._trips.splice(this._trips.indexOf(this.getTripById(id)),1);
+    }
 }
