@@ -4,7 +4,6 @@ export class Chart{
     drawBarChart({data=[], labels=[], canvasId=""}={}){
         const canvas = document.getElementById(canvasId);
         if(canvas){
-             
             const ctx = canvas.getContext("2d");
 
             const canvasHeight = canvas.offsetHeight;
@@ -20,6 +19,8 @@ export class Chart{
             const width = (canvasWidth / numberOfBars) - barDistance;
             
             const unity = chartHeight / data.reduce((p,c)=>p>c?p:c);
+            
+            ctx.clearRect(0,0,canvasWidth, canvasHeight);
             for(let i = 0; i< data.length ; i++){
                 const x = i * (width + barDistance);
                 const height = data[i] * unity;

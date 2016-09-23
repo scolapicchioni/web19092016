@@ -6,7 +6,7 @@ $dark-background: #9099A2;
 
 @font-face{
     font-family : Pacifico;
-    src: url('fonts/Pacifico.ttf');
+    src: url('../fonts/Pacifico.ttf');
 }
 
 #template{
@@ -93,7 +93,7 @@ nav{
     justify-content: space-between;
 }
 
-#add-trip-container{
-    display:none;
+.invisible{
+    display: none;
 }
 

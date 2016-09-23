@@ -111,7 +111,13 @@
 	        }
 	    }]);
 	
-	    function Trip(id, destination, description, date, rating) {
+	    function Trip() {
+	        var id = arguments.length <= 0 || arguments[0] === undefined ? 0 : arguments[0];
+	        var destination = arguments.length <= 1 || arguments[1] === undefined ? "" : arguments[1];
+	        var description = arguments.length <= 2 || arguments[2] === undefined ? "" : arguments[2];
+	        var date = arguments.length <= 3 || arguments[3] === undefined ? "" : arguments[3];
+	        var rating = arguments.length <= 4 || arguments[4] === undefined ? 0 : arguments[4];
+	
 	        _classCallCheck(this, Trip);
 	
 	        this.id = id || 0;
@@ -170,6 +176,28 @@
 	            this._trips.push(trip);
 	            return trip;
 	        }
+	    }, {
+	        key: "getTripById",
+	        value: function getTripById(id) {
+	            return this._trips.filter(function (t) {
+	                return t.id === id;
+	            })[0];
+	        }
+	    }, {
+	        key: "editTrip",
+	        value: function editTrip(trip) {
+	            var original = this.getTripById(trip.id);
+	            original.description = trip.description;
+	            original.destination = trip.destination;
+	            original.date = trip.date;
+	            original.rating = trip.rating;
+	            return original;
+	        }
+	    }, {
+	        key: "removeTrip",
+	        value: function removeTrip(id) {
+	            this._trips.splice(this._trips.indexOf(this.getTripById(id)), 1);
+	        }
 	    }]);
 
 	    return ArrayDataLayer;
@@ -212,8 +240,42 @@
 	    _createClass(ViewModel, [{
 	        key: "init",
 	        value: function init() {
+	            var _this2 = this;
+	
+	            this.refreshUI();
+	
+	            document.getElementById("add-trip").addEventListener("click", function () {
+	                return _this2.addTrip();
+	            });
+	            document.getElementById("save-trip").addEventListener("click", function () {
+	                return _this2.saveTrip();
+	            });
+	        }
+	    }, {
+	        key: "drawBarChart",
+	        value: function drawBarChart() {
+	            var trips = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+	
+	            var chart = new _Chart.Chart();
+	            var options = {
+	                data: trips.map(function (t) {
+	                    return t.rating;
+	                }),
+	                labels: trips.map(function (t) {
+	                    return t.destination;
+	                }),
+	                canvasId: "chart"
+	            };
+	            chart.drawBarChart(options);
+	        }
+	    }, {
+	        key: "refreshUI",
+	        value: function refreshUI() {
+	            var _this3 = this;
+	
 	            var trips = this._dataLayer.getAllTrips();
 	            var target = document.getElementById("trips");
+	            target.innerHTML = "";
 	            var template = document.getElementById("template");
 	            var _iteratorNormalCompletion = true;
 	            var _didIteratorError = false;
@@ -227,8 +289,18 @@
 	                    newTripElement.removeAttribute("id");
 	                    newTripElement.children[0].children[0].innerHTML = trip.destination;
 	                    newTripElement.children[1].children[0].innerHTML = trip.description;
-	                    newTripElement.children[2].children[0].innerHTML = trip.date;
-	                    newTripElement.children[2].children[1].innerHTML = trip.rating.toString();
+	                    newTripElement.children[1].children[1].innerHTML = trip.date;
+	                    newTripElement.children[1].children[2].innerHTML = trip.rating.toString();
+	                    var btnEdit = newTripElement.children[2].children[0].children[0];
+	                    btnEdit.setAttribute("data-trip-id", trip.id.toString());
+	                    btnEdit.addEventListener("click", function (event) {
+	                        return _this3.editTrip(+event.srcElement.getAttribute("data-trip-id"));
+	                    });
+	                    var btnDelete = newTripElement.children[2].children[1].children[0];
+	                    btnDelete.setAttribute("data-trip-id", trip.id.toString());
+	                    btnDelete.addEventListener("click", function (event) {
+	                        return _this3.deleteTrip(+event.srcElement.getAttribute("data-trip-id"));
+	                    });
 	                    target.appendChild(newTripElement);
 	                }
 	            } catch (err) {
@@ -249,21 +321,55 @@
 	            this.drawBarChart(trips);
 	        }
 	    }, {
-	        key: "drawBarChart",
-	        value: function drawBarChart() {
-	            var trips = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+	        key: "showForm",
+	        value: function showForm(trip) {
+	            document.getElementById("add-trip-container").classList.remove("invisible");
+	            document.getElementById("save-trip").setAttribute("data-trip-id", trip.id.toString());
+	            document.getElementById("destination-input").value = trip.destination;
+	            document.getElementById("description-input").value = trip.description;
+	            document.getElementById("date-input").value = trip.date;
+	            document.getElementById("rating-input").value = trip.rating.toString();
+	        }
+	    }, {
+	        key: "addTrip",
+	        value: function addTrip() {
+	            var trip = new _Trip.Trip();
+	            this.showForm(trip);
+	        }
+	    }, {
+	        key: "deleteTrip",
+	        value: function deleteTrip(tripId) {
+	            this._dataLayer.removeTrip(tripId);
+	            this.refreshUI();
+	        }
+	    }, {
+	        key: "editTrip",
+	        value: function editTrip(tripId) {
+	            var trip = this._dataLayer.getTripById(tripId);
+	            this.showForm(trip);
+	        }
+	    }, {
+	        key: "saveTrip",
+	        value: function saveTrip() {
+	            event.preventDefault();
 	
-	            var chart = new _Chart.Chart();
-	            var options = {
-	                data: trips.map(function (t) {
-	                    return t.rating;
-	                }),
-	                labels: trips.map(function (t) {
-	                    return t.destination;
-	                }),
-	                canvasId: "chart"
-	            };
-	            chart.drawBarChart(options);
+	            var trip = new _Trip.Trip();
+	            trip.id = +document.getElementById("save-trip").getAttribute("data-trip-id");
+	            trip.destination = document.getElementById("destination-input").value;
+	            trip.description = document.getElementById("description-input").value;
+	            trip.date = document.getElementById("date-input").value;
+	            trip.rating = +document.getElementById("rating-input").value;
+	
+	            if (trip.id === 0) {
+	                this._dataLayer.addTrip(trip);
+	            } else {
+	                this._dataLayer.editTrip(trip);
+	            }
+	
+	            document.getElementById("add-trip-container").classList.add("invisible");
+	
+	            this.refreshUI();
+	            return false;
 	        }
 	    }]);
 
@@ -303,7 +409,6 @@
 	
 	            var canvas = document.getElementById(canvasId);
 	            if (canvas) {
-	
 	                var ctx = canvas.getContext("2d");
 	
 	                var canvasHeight = canvas.offsetHeight;
@@ -321,6 +426,8 @@
 	                var unity = chartHeight / data.reduce(function (p, c) {
 	                    return p > c ? p : c;
 	                });
+	
+	                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 	                for (var i = 0; i < data.length; i++) {
 	                    var x = i * (width + barDistance);
 	                    var height = data[i] * unity;
